@@ -1,7 +1,7 @@
 const SubscriptionModel = require('../models/subscription.model');
 
 exports.createSubscriptionsController = async (req,res,next)=>{
-    const {contentName, owner} = req.body;
+    const {contentName, contentDescription, owner} = req.body;
     const data = await SubscriptionModel.create({contentName,contentDescription, owner});
 
     res.status(200).json({success:true, data});
@@ -20,7 +20,7 @@ exports.getSubscriptionController = async (req,res,next)=>{
 }
 
 exports.updateSubscriptionController = async (req,res,next)=>{
-    const {contentName, owner} = req.body;
+    const {contentName, contentDescription, owner} = req.body;
     const data = await SubscriptionModel.findByIdAndUpdate(req.params.subsid, {contentName, contentDescription, owner}, {new:true});
 
     res.status(200).json({success:true, data});
