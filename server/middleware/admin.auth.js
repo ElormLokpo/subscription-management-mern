@@ -1,5 +1,6 @@
 const AdminModel = require('../models/admin.user');
 const jwt = require('jsonwebtoken');
+const ErrorHanlder = require('../utils/errHanlder');
 
 
 exports.adminAuthorize = async function(req,res,next){
@@ -12,7 +13,7 @@ exports.adminAuthorize = async function(req,res,next){
     let {_id} = await AdminModel.findById(id);
     
     if(!_id){
-        throw Error('You are not authorized to access this functionality ');
+       next(ErrorHanlder(500, 'User not authorized'))
     }
     
     req.user = _id;

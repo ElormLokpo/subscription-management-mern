@@ -28,7 +28,7 @@ AdminSchema.pre('save', async function(){
 
 AdminSchema.methods.compPassword = async function(password){
     const validPassword = await bcrypt.compare(password, this.password);
-   
+    console.log(validPassword);
     return validPassword;
 }
 

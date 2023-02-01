@@ -4,6 +4,8 @@ const connectDB = require('./utils/dbConfig');
 const UserEmailRoutes = require('./routes/user.emails.routes');
 const SubscriptionRoutes = require('./routes/subscription.routes');
 const AdminAuthRoutes = require('./routes/admin.auth.routes');
+const {errorMiddleware} = require('./middleware/error.middleware');
+
 
 dotenv.config({path: './config/.env'});
 
@@ -13,6 +15,8 @@ app.use(express.json());
 app.use('/useremails', UserEmailRoutes);
 app.use('/subscriptions', SubscriptionRoutes);
 app.use('/auth', AdminAuthRoutes);
+
+app.use(errorMiddleware);
 
 connectDB();
 
