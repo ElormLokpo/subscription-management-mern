@@ -33,7 +33,7 @@ AdminSchema.methods.compPassword = async function(password){
 }
 
 AdminSchema.methods.createToken = async function(){
-    const token = await jsonwebtoken.sign({id:this._id},process.env.JWT_SECRET, {expiresIn:30});
+    const token = await jsonwebtoken.sign({id:this._id},process.env.JWT_SECRET, {expiresIn:'30d'});
     return token;
 }
 

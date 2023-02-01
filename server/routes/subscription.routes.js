@@ -7,7 +7,9 @@ const {
     updateSubscriptionController,
     deleteSubscriptionController
 } = require('../controllers/subscription.controller')
+const {adminAuthorize} = require('../middleware/admin.auth');
 
+Router.use(adminAuthorize);
 Router.route('/').get(getSubscriptionsController);
 Router.route('/create').post(createSubscriptionsController);
 Router.route('/:subsid').get(getSubscriptionController).put(updateSubscriptionController).delete(deleteSubscriptionController);
