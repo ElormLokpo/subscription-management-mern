@@ -1,0 +1,16 @@
+.main-signup-container{
+    background: url('../../images/signup.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.right-pane{
+    background-color: rgba(0, 0, 0, 0.396);
+    backdrop-filter: blur(20px);
+}
+
+.btn{
+    background-color: $primary-color-two;
+}
