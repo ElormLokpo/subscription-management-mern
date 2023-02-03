@@ -4,7 +4,7 @@ const connectDB = require('./utils/dbConfig');
 const UserEmailRoutes = require('./routes/user.emails.routes');
 const SubscriptionRoutes = require('./routes/subscription.routes');
 const AdminAuthRoutes = require('./routes/admin.auth.routes');
-const EmailToSubscribersRoutes = require('./routes/email.subscriber.route')
+const EmailToSubscribersRoutes = require('./routes/email.to.subscriber.route')
 const {errorMiddleware} = require('./middleware/error.middleware');
 
 

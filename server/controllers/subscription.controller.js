@@ -2,22 +2,20 @@ const SubscriptionModel = require('../models/subscription.model');
 const ErrorHanlder = require('../utils/errHanlder');
 
 exports.createSubscriptionsController = async (req,res,next)=>{
-    try{
+        try{
 
         const {contentName, contentDescription, owner} = req.body;
         const data = await SubscriptionModel.create({contentName,contentDescription, owner});
 
-        if(contentName='', contentDescription='', owner=''){
+        if(contentName=='', contentDescription=='', owner==''){
             next(new ErrorHandler('Fields cannot be empty'))
         }
     
         res.status(200).json({success:true, data});
     }catch(error){
-
         next(new ErrorHanlder('Something went wrong'));
     }
-  
-
+    
 }
 
 exports.getSubscriptionsController = async (req,res,next)=>{

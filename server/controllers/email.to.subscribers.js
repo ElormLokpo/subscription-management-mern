@@ -1,18 +1,24 @@
 const nodemailer = require('nodemailer');
 const UserEmailModel = require('../models/user.emails');
+const SubscriptionModel = require('../models/subscription.model');
 const {emailTemplate} = require('../utils/emailTemplate');
 
 exports.emailToSubscribers = async (req, res, next)=>{
     const {subject,titleMsg, bodyMsg} = req.body;
-    const data = await UserEmailModel.find().select('email');
+    const {_id} = await SubscriptionModel.findOne({owner: req.user})
 
-    let arr = [];
+
+    const data = await UserEmailModel.find({subscription: _id}).select('email');
+
+    let emailsToSend = [];
     
     for(let i=0; i< data.length; i++){
         let s = data[i].email;
-        arr.push(s);
+        emailsToSend.push(s);
         
     }
+
+    
 
     let transporter = nodemailer.createTransport({
         host: "sandbox.smtp.mailtrap.io",
@@ -27,10 +33,10 @@ exports.emailToSubscribers = async (req, res, next)=>{
 
     transporter.sendMail({
         from :'benedictdev@gmail.com',
-        to: arr,
+        to: emailsToSend,
         subject: subject,
         html: emailTemp
     })
 
-    res.status(200).json({msg:'successs', arr});
+    res.status(200).json({msg:'successs', emailsToSend, emails: emailsToSend});
 }
