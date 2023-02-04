@@ -8,7 +8,7 @@
 
 html{
     height: 100%;
-    @apply text-white
+   
 }
 
 body{
@@ -17,4 +17,11 @@ body{
 
 #root{
     height: 100%;
+}
+
+input:focus{
+    outline: none;
+}
+input{
+    @apply text-sm px-2;
 }

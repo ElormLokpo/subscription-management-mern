@@ -7,10 +7,13 @@
 }
 
 .right-pane{
-    background-color: rgba(0, 0, 0, 0.396);
-    backdrop-filter: blur(20px);
+   @apply bg-white;
 }
 
 .btn{
     background-color: $primary-color-two;
+}
+
+.box{
+    width: 35vw;
 }
