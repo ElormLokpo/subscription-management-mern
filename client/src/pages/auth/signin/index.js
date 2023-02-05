@@ -27,7 +27,7 @@ function SignIn() {
                     
 
                     <div className='w-full my-5'>
-                        <button className='btn hover:bg-yellow-700 w-full py-3 rounded text-sm'>Sign Up</button>
+                        <button className='btn hover:bg-yellow-600 w-full py-3 rounded text-sm'>Sign Up</button>
                     </div>
                     <p className='flex justify-center my-2'>
                         OR

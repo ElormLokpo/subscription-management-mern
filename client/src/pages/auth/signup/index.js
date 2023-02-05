@@ -35,7 +35,7 @@ function SignUp() {
                     </div>
 
                     <div className='w-full my-2'>
-                        <button className='btn hover:bg-yellow-700 w-full py-3 rounded text-sm'>Sign Up</button>
+                        <button className='btn hover:bg-yellow-600 w-full py-3 rounded text-sm'>Sign Up</button>
                     </div>
                     <p className='flex justify-center my-2'>
                         OR
