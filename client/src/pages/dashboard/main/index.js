@@ -1,4 +1,5 @@
 import React from 'react'
+import Table from '../../../components/table';
 
 function DashboardMainPage() {
   return (
@@ -34,18 +35,16 @@ function DashboardMainPage() {
             <div className='flex flex-row col-span-7 gap-2 overflow-x'>
                 {
                     [1,2,3,4,5,].map(i=> 
-                        <div className='card-main-page border-b-8 p-4 border rounded flex flex-col justify-between items-center'>
-                            <div>
-
-                            </div> 
+                        <div className='card-main-page p-4 border rounded flex flex-col justify-center items-center'>
+                          
 
                             <div>
                                 <p className='text-center font-light'>Brown Content</p>
                             </div>
                             
-                            <div className=''>
+                            {/* <div className=''>
                                 <button className='text-yellow-400 underline  px-5 py-1 '>View</button>
-                            </div>
+                            </div> */}
                         
                         </div>)
                 }
@@ -55,34 +54,10 @@ function DashboardMainPage() {
 
 
         </div>
-
+            
         <div>
-            <table className='border w-full h-full'>
-                <thead className=''>
-                    <tr className='border-b bg-gray-100'>
-                        <td className='py-2 px-2 font-semibold'>Email</td>
-                        <td className='py-2 px-2 font-semibold'>Content</td>
-                        <td className='py-2 px-2 font-semibold'>Delete</td>
-                    </tr>
-                </thead>
-
-                {
-                    [1,2,2,2,2,2,2].map(i=>  <tr className='border-b'>
-                                                <td className='py-2 px-2 text-sm'>
-                                                    Jackson@jock.com
-                                                </td>
-                                                <td className='py-2 px-2 text-sm'>
-                                                    Brown Content
-                                                </td>
-                                                <td className='py-2 px-2 text-sm'>
-                                                    Delete
-                                                </td>
-                                            </tr>)
-                }
-              
-                
-                
-            </table>
+            <Table />
+    
         </div>
        
 

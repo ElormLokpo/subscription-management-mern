@@ -1,9 +1,10 @@
 import ReactDOM from 'react-dom';
 import './assets/styles/main.scss';
-import DashboardMainPage from './pages/auth/dashboard/main';
+import DashboardMainPage from './pages/dashboard/main';
 import SignIn from './pages/auth/signin';
 
 import SignUp from './pages/auth/signup';
+import EmailCreate from './pages/dashboard/emailcreate';
 
 
-ReactDOM.render(<DashboardMainPage />, document.querySelector('#root'));
+ReactDOM.render(<EmailCreate />, document.querySelector('#root'));
