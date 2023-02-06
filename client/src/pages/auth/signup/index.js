@@ -2,11 +2,11 @@ import React from 'react'
 
 function SignUp() {
   return (
-    <div className='h-full grid grid-cols-3 main-signup-container'>
+    <div className='h-full grid grid-cols-2 main-signup-container'>
         <div className=''>
             s
         </div>
-        <div className='col-span-2 right-pane flex justify-center items-center'>
+        <div className='col-span-1 right-pane flex justify-center items-center'>
             <div className='bg-white box rounded p-3'>
                 <h2 className='text-2xl mb-2'>Sign Up</h2>
                 <p className='text-sm font-light'>It is a long established fact that a reader will be distracted by 

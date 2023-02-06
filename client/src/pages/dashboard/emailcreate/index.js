@@ -28,7 +28,7 @@ function EmailCreate() {
                 </div>
 
                 <div className='flex justify-end'>
-                    <button className='bg-yellow-400 p-2 rounded text-xs'>Create Content</button>
+                    <button className='bg-yellow-400 p-2 rounded text-xs'>Send email</button>
                 </div>
             </div>
 
