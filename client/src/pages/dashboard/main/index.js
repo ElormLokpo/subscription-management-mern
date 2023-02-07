@@ -23,17 +23,17 @@ function DashboardMainPage() {
                 </div>
 
                 <div className='mb-3'>
-                    <label className='text-xs flex flex-col'>Content Name:</label>
+                    <label className='text-xs flex flex-col'>Content Description:</label>
                     <textarea type='text' className='border rounded w-full py-1'> </textarea>
                 </div>
 
                 <div className='flex justify-end'>
-                    <button className='bg-yellow-400 p-2 rounded text-xs'>Create Content</button>
+                    <button className='btn text-white p-2 rounded text-xs'>Create Content</button>
                 </div>
             </div>
 
-            <div className='flex flex-row col-span-7 gap-2 overflow-x'>
-                {
+            <div className='flex flex-row col-span-7 gap-2 overflow-x border rounded'>
+                {/* {
                     [1,2,3,4,5,].map(i=> 
                         <div className='card-main-page p-4 border rounded flex flex-col justify-center items-center'>
                           
@@ -42,13 +42,13 @@ function DashboardMainPage() {
                                 <p className='text-center font-light'>Brown Content</p>
                             </div>
                             
-                            {/* <div className=''>
+                            <div className=''>
                                 <button className='text-yellow-400 underline  px-5 py-1 '>View</button>
-                            </div> */}
+                            </div>
                         
                         </div>)
                 }
-               
+                */}
                
             </div>
 

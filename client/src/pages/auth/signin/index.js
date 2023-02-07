@@ -27,13 +27,13 @@ function SignIn() {
                     
 
                     <div className='w-full my-5'>
-                        <button className='btn hover:bg-yellow-600 w-full py-3 rounded text-sm'>Sign Up</button>
+                        <button className='btn hover:bg-yellow-600 w-full py-3 text-white rounded text-xs'>Sign In</button>
                     </div>
                     <p className='flex justify-center my-2'>
                         OR
                     </p>
                     <div className='w-full'>
-                        <button className='bg-black text-white w-full py-3 rounded text-sm'>Continue with Google</button>
+                        <button className='bg-blue-500 text-white w-full py-3 rounded text-xs'>Continue with Google</button>
                     </div>
                 </div>
             </div>

@@ -25,11 +25,14 @@ exports.loginAdminController = async (req,res,next)=>{
     try{
         const {email, password} = req.body;
         const emailFind = await AdminModel.findOne({email});
+
     
         const checkPassword = await emailFind.compPassword(password);
         const token = await emailFind.createToken();
+        const sendData ={email:emailFind.email, fullname: emailFind.fullname}
+
         if(checkPassword){
-            res.status(200).json({success:true, emailFind,token, msg:'Login successful'});
+            res.status(200).json({success:true, sendData,token, msg:'Login successful'});
            
         }
         next(new ErrorHanlder('Wrong password'));
