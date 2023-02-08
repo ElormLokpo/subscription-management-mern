@@ -1,6 +1,39 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {storeToken} from '../../../services/redux/slices/loginSlice';
+import axios from '../../../services/axios';
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+   
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+
+    const handleSubmit = ()=>{
+        axios.post('/auth/login', {email, password})
+        .then(res=>{
+            if(res.data.token){
+                dispatch(storeToken(res.data.token));
+                console.log({success:true})
+            }
+        })
+    
+    }
+    const current = useSelector(state=>state.loginS.value);
+
+   
+    useEffect(()=>{       
+        console.log(current.token);     
+        if(current.token){
+           navigate('/dashboard');
+        }
+    },[current]);
+   
+   
+
   return (
     <div className='h-full main-signup-container flex items-center justify-center'>
         
@@ -16,18 +49,18 @@ function SignIn() {
 
                     <div className='flex flex-col mb-3'>
                         <label className='text-xs mb-1'>Email:</label>
-                        <input type = 'email' className='py-2 rounded bg-gray-100' />
+                        <input type = 'email' className='py-2 rounded bg-gray-100' onChange={e=>setEmail(e.target.value)}/>
                     </div>
 
                     <div className='flex flex-col mb-3'>
                         <label className='text-xs mb-1'>Password:</label>
-                        <input type = 'password' className='py-2 rounded bg-gray-100' />
+                        <input type = 'password' className='py-2 rounded bg-gray-100' onChange = {e=>setPassword(e.target.value)} />
                     </div>
 
                     
 
                     <div className='w-full my-5'>
-                        <button className='btn hover:bg-yellow-600 w-full py-3 text-white rounded text-xs'>Sign In</button>
+                        <button className='btn hover:bg-purple-900 w-full py-3 text-white rounded text-xs' onClick= {handleSubmit}>Sign In</button>
                     </div>
                     <p className='flex justify-center my-2'>
                         OR

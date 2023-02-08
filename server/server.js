@@ -6,6 +6,7 @@ const SubscriptionRoutes = require('./routes/subscription.routes');
 const AdminAuthRoutes = require('./routes/admin.auth.routes');
 const EmailToSubscribersRoutes = require('./routes/email.to.subscriber.route')
 const {errorMiddleware} = require('./middleware/error.middleware');
+const cors = require('cors');
 
 
 dotenv.config({path: './config/.env'});
@@ -13,6 +14,7 @@ dotenv.config({path: './config/.env'});
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use('/useremails', UserEmailRoutes);
 app.use('/subscriptions', SubscriptionRoutes);
 app.use('/auth', AdminAuthRoutes);
