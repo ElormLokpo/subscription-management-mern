@@ -5,58 +5,51 @@ function DashboardMainPage() {
   return (
     <div className='m-5 h-full'>
        
-        <div className='mb-5'>
+        <div className='mb-2'>
             <p className='font-semibold text-xl'>Welcome to your dashboard</p>
-            <div className='text-sm'>
+            <div className='text-sm font-light'>
                 <p>Kwesi Bareth</p>
                 <p>kwsibar@gmail.com</p>
             </div>
         </div>
 
 
-        <div className='grid grid-cols-12 gap-4 spacing-bottom'>
-
-            <div className='border rounded col-span-5 p-2'>
-                <div className='mb-2'>
-                    <label className='text-xs flex flex-col'>Content Name:</label>
-                    <input type='text' className='border rounded w-full py-1' />
-                </div>
-
-                <div className='mb-3'>
-                    <label className='text-xs flex flex-col'>Content Description:</label>
-                    <textarea type='text' className='border rounded w-full py-1'> </textarea>
-                </div>
-
-                <div className='flex justify-end'>
-                    <button className='btn text-white p-2 rounded text-xs'>Create Content</button>
-                </div>
+        <div className='grid gap-4 w-2/4 mb-5 spacing-bottom'>
+            <div className=''>
+               <p className='text-sm '>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                standard dummy text ever since the 1500s, when an unknown printer took a galley of type 
+                remaining essentially unchanged</p>
             </div>
-
-            <div className='flex flex-row col-span-7 gap-2 overflow-x border rounded'>
-                {/* {
-                    [1,2,3,4,5,].map(i=> 
-                        <div className='card-main-page p-4 border rounded flex flex-col justify-center items-center'>
-                          
-
-                            <div>
-                                <p className='text-center font-light'>Brown Content</p>
-                            </div>
-                            
-                            <div className=''>
-                                <button className='text-yellow-400 underline  px-5 py-1 '>View</button>
-                            </div>
-                        
-                        </div>)
-                }
-                */}
-               
-            </div>
-
 
         </div>
             
-        <div>
-            <Table />
+
+        <div className='grid grid-cols-12 gap-2'>
+            <div className='col-span-5'>
+                
+                <div className='flex gap-2 mb-5 content-grid'>
+                    {
+                        [1,2,3,4].map(i=> 
+                            <div className='card-main-page p-2 border rounded flex flex-col w-full text-xs content-grid-item'>
+                                <p className='font-semibold mb-2'><span className='bg-green-400 rounded-full'></span>Title Content</p>
+                                <p className='mb-3'>28th Something 2022</p>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                                    standard dummy text ever since the</p>
+
+            
+                            
+                            </div>)
+                    }
+                
+                
+                </div>
+
+            </div>
+
+           <div className='col-span-7'>
+               
+                <Table />
+           </div>
     
         </div>
        

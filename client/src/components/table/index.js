@@ -2,7 +2,7 @@ import React from 'react'
 
 function Table() {
   return (
-    <table className='border w-full h-full'>
+    <table className='border w-full h-full text-sm'>
         <thead className=''>
             <tr className='border-b bg-gray-100'>
                 <td className='py-2 px-2 font-semibold'>Email</td>
