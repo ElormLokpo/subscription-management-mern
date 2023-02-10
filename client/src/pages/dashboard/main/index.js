@@ -33,8 +33,9 @@ function DashboardMainPage() {
                             <div className='card-main-page p-2 border rounded flex flex-col w-full text-xs content-grid-item'>
                                 <p className='font-semibold mb-2'><span className='bg-green-400 rounded-full'></span>Title Content</p>
                                 <p className='mb-3'>28th Something 2022</p>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                                    standard dummy text ever since the</p>
+                                {/* <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                                    standard dummy text ever since the</p> */}
+                                    <p>Refactoring code</p>
 
             
                             
