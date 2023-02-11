@@ -37,7 +37,7 @@ function DashboardMainPage() {
                                     standard dummy text ever since the</p> */}
                                     <p>Refactoring code</p>
 
-            
+                                    <p>Second Refactoring</p>
                             
                             </div>)
                     }
