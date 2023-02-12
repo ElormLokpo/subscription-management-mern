@@ -38,6 +38,7 @@ function DashboardMainPage() {
                                     <p>Refactoring code</p>
 
                                     <p>Second Refactoring</p>
+                                    <p>Third refacotr</p>
                             
                             </div>)
                     }
