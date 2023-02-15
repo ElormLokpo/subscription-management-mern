@@ -1,8 +1,6 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import ContentCreate from './contentcreate'
-import EmailCreate from './emailcreate'
-import DashboardMainPage from './main'
+import {Outlet} from 'react-router-dom';
+
 
 function Dashboard() {
   return (
@@ -17,12 +15,11 @@ function Dashboard() {
                 
             </div>
         </nav>
-        <Routes>
-          <Route path = '/main' element = {<DashboardMainPage />} />
-          <Route path = '/email' element = {<EmailCreate />} />
-          <Route path = '/content' element = {<ContentCreate />} />
 
-        </Routes>
+        <div>
+          <Outlet />
+        </div>
+       
         
     </div>
   )

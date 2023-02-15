@@ -14,7 +14,7 @@ function ContentCreate() {
         </div>
 
 
-        <div className='grid grid-cols-12 gap-4 spacing-bottom'>
+        <div className='grid grid-cols-12 gap-4 spacing-bottom-two'>
 
             <div className='border rounded col-span-5 p-2'>
                 <div className='mb-2'>
