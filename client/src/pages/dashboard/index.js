@@ -1,4 +1,7 @@
 import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import ContentCreate from './contentcreate'
+import EmailCreate from './emailcreate'
 import DashboardMainPage from './main'
 
 function Dashboard() {
@@ -14,7 +17,13 @@ function Dashboard() {
                 
             </div>
         </nav>
-        <DashboardMainPage />
+        <Routes>
+          <Route path = '/main' element = {<DashboardMainPage />} />
+          <Route path = '/email' element = {<EmailCreate />} />
+          <Route path = '/content' element = {<ContentCreate />} />
+
+        </Routes>
+        
     </div>
   )
 }
