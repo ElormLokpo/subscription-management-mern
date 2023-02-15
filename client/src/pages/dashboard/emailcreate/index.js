@@ -6,7 +6,7 @@ function EmailCreate() {
     <div className='m-5 h-full'>
        
         <div className='mb-5'>
-            <p className='font-semibold text-xl'>Email</p>
+            <p className='font-semibold text-xl'>Create Email</p>
             <div className='text-sm'>
                 <p>Kwesi Bareth</p>
                 <p>kwsibar@gmail.com</p>
