@@ -29,7 +29,7 @@ exports.loginAdminController = async (req,res,next)=>{
     
         const checkPassword = await emailFind.compPassword(password);
         const token = await emailFind.createToken();
-        const sendData ={email:emailFind.email, fullname: emailFind.fullname}
+        const sendData ={id: emailFind._id ,email:emailFind.email, fullname: emailFind.fullname}
 
         if(checkPassword){
             res.status(200).json({success:true, sendData,token, msg:'Login successful'});

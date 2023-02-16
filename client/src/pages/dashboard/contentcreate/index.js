@@ -1,34 +1,42 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import HeaderText from '../../../components/headerText';
 import Table from '../../../components/table';
+import {GetUserDataFromReduxStore} from '../../../components/usrdataredux';
 
 function ContentCreate() {
+ const[contentName, setContentName] = useState();
+ const[contentDescription, setContentDescription] = useState();
+ const[owner, setOwner] = useState();
+
+let usrData = GetUserDataFromReduxStore();
+
+const submitHandler = ()=>{
+   
+    console.log({contentName, contentDescription, owner, owner : usrData.id});
+ }
+
+
   return (
     <div className='m-5 h-full'>
        
-        <div className='mb-5'>
-            <p className='font-semibold text-xl'>Create Content</p>
-            <div className='text-sm'>
-                <p>Kwesi Bareth</p>
-                <p>kwsibar@gmail.com</p>
-            </div>
-        </div>
+        <HeaderText title = "Create your content" />
 
 
-        <div className='grid grid-cols-12 gap-4 spacing-bottom-two'>
+        <div className='grid grid-cols-12 gap-4 spacing-bottom-two mt-4'>
 
             <div className='border rounded col-span-5 p-2'>
                 <div className='mb-2'>
                     <label className='text-xs flex flex-col'>Content Heading:</label>
-                    <input type='text' className='border rounded w-full py-1' />
+                    <input type='text' className='border rounded w-full py-1 text-sm px-1' onChange = {e=>setContentName(e.target.value)}/>
                 </div>
 
                 <div className='mb-3'>
                     <label className='text-xs flex flex-col'>Content Body:</label>
-                    <textarea type='text' className='border rounded w-full py-1'> </textarea>
+                    <textarea type='text' className='border rounded w-full py-1 px-1 text-sm' onChange = {e=> setContentDescription(e.target.value)}> </textarea>
                 </div>
 
                 <div className='flex justify-end'>
-                    <button className='bg-purple-600 p-2 text-white rounded text-xs'>Create Content</button>
+                    <button className='bg-purple-600 p-2 text-white rounded text-xs' onClick = {submitHandler}>Create Content</button>
                 </div>
             </div>
 

@@ -1,20 +1,15 @@
 import React from 'react';
+import HeaderText from '../../../components/headerText';
 import Table from '../../../components/table';
 
 function EmailCreate() {
   return (
     <div className='m-5 h-full'>
        
-        <div className='mb-5'>
-            <p className='font-semibold text-xl'>Create Email</p>
-            <div className='text-sm'>
-                <p>Kwesi Bareth</p>
-                <p>kwsibar@gmail.com</p>
-            </div>
-        </div>
+       <HeaderText title = "Send emails to subscribers" />
 
 
-        <div className='grid grid-cols-12 gap-4 spacing-bottom-two'>
+        <div className='grid grid-cols-12 gap-4 spacing-bottom-two mt-4'>
 
             <div className='border rounded col-span-5 p-2'>
                 <div className='mb-2'>

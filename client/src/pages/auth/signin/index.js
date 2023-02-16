@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {storeToken} from '../../../services/redux/slices/loginSlice';
+import {storeToken, storeUserData} from '../../../services/redux/slices/loginSlice';
 import axios from '../../../services/axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,6 +17,7 @@ function SignIn() {
         .then(res=>{
             if(res.data.token){
                 dispatch(storeToken(res.data.token));
+                dispatch(storeUserData(res.data.sendData));
                 console.log({success:true})
             }
         })
@@ -29,6 +30,7 @@ function SignIn() {
         console.log(current.token);     
         if(current.token){
            navigate('/dashboard');
+          
         }
     },[current]);
    

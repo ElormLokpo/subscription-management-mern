@@ -1,8 +1,10 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {Outlet, Link} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 
 
 function Dashboard() {
+ 
   return (
     <div>
         <nav className='bg-gray-900 text-white py-2 px-3 flex justify-between text-sm'>

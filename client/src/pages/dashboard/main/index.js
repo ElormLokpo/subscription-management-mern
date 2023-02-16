@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import HeaderText from '../../../components/headerText';
 import Table from '../../../components/table';
+import {GetUserDataFromReduxStore} from '../../../components/usrdataredux';
 
 function DashboardMainPage() {
+
+  const usrData = GetUserDataFromReduxStore();
+  useEffect(()=>{
+    console.log(usrData);
+  },[])
   return (
     <div className='m-5 h-full'>
        
-        <div className='mb-2'>
-            <p className='font-semibold text-xl'>Welcome to your dashboard</p>
-            <div className='text-sm font-light'>
-                <p>Kwesi Bareth</p>
-                <p>kwsibar@gmail.com</p>
-            </div>
-        </div>
+       <HeaderText title = "Welcome to your Dashboard" />
 
 
         <div className='grid gap-4 w-2/4 mb-5 spacing-bottom'>
