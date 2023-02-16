@@ -11,7 +11,8 @@ const SubscriptionSchema = mongoose.Schema({
     contentDescription:String,
     owner:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'AdminModel'
+        ref: 'AdminModel',
+        required: true
     }
 }, {timestamps: true})
 

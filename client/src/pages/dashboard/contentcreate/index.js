@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import HeaderText from '../../../components/headerText';
 import Table from '../../../components/table';
 import {GetUserDataFromReduxStore} from '../../../components/usrdataredux';
+import axios from '../../../services/axios';
+
 
 function ContentCreate() {
  const[contentName, setContentName] = useState();
@@ -11,8 +13,13 @@ function ContentCreate() {
 let usrData = GetUserDataFromReduxStore();
 
 const submitHandler = ()=>{
+   const data = {contentName, contentDescription, owner, owner : usrData.id};
    
-    console.log({contentName, contentDescription, owner, owner : usrData.id});
+   axios.post('/subscriptions/create', data,{
+    headers:{
+        Authorization: `Bearer ${usrData.token}`
+    }
+   }).then(res=>console.log(res.data));
  }
 
 

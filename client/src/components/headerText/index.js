@@ -8,8 +8,8 @@ function HeaderText(props) {
         <div className='mb-2'>
             <p className='font-semibold text-xl'>{props.title}</p>
             <div className='text-sm font-light'>
-                <p>{usrData.fullname}</p>
-                <p>{usrData.email}</p>
+                <p>{usrData.userData.fullname}</p>
+                <p>{usrData.userData.email}</p>
             </div>
         </div>
   )

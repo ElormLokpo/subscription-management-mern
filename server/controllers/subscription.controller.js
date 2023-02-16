@@ -12,6 +12,7 @@ exports.createSubscriptionsController = async (req,res,next)=>{
         }
     
         res.status(200).json({success:true, data});
+        next();
     }catch(error){
         next(new ErrorHanlder('Something went wrong'));
     }
@@ -20,8 +21,10 @@ exports.createSubscriptionsController = async (req,res,next)=>{
 
 exports.getSubscriptionsController = async (req,res,next)=>{
     try{
-        const data = await SubscriptionModel.find();
+        let ownerId = req.query.id;
+        const data = await SubscriptionModel.find({owner:ownerId});
         res.status(200).json({success:true, data});
+        next();
 
     } catch(error){
         next(new ErrorHanlder('Something went wrong'));
@@ -35,6 +38,7 @@ exports.getSubscriptionController = async (req,res,next)=>{
     try{
         const data = await SubscriptionModel.findById(req.params.subsid);
         res.status(200).json({success:true, data});
+        next();
     } catch(error){
         next(new ErrorHanlder('Something went wrong'));
     }
@@ -48,6 +52,7 @@ exports.updateSubscriptionController = async (req,res,next)=>{
         const data = await SubscriptionModel.findByIdAndUpdate(req.params.subsid, {contentName, contentDescription, owner}, {new:true});
     
         res.status(200).json({success:true, data});
+        next();
     }catch(error){
         next(new ErrorHanlder('Something went wrong'));
     }
@@ -60,7 +65,7 @@ exports.deleteSubscriptionController = async (req,res,next)=>{
         const data = await SubscriptionModel.findByIdAndDelete(req.params.subsid);
 
         res.status(200).json({success:true, data});
-    
+        next();
 
     }catch(error){
         next(new ErrorHanlder('Something went wrong'));

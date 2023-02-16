@@ -39,4 +39,5 @@ exports.emailToSubscribers = async (req, res, next)=>{
     })
 
     res.status(200).json({msg:'successs', emailsToSend, emails: emailsToSend});
+    next();
 }
