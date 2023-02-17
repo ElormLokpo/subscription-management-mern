@@ -1,18 +1,22 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import HeaderText from '../../../components/headerText';
 import Table from '../../../components/table';
 import axios from '../../../services/axios';
 import {GetUserDataFromReduxStore} from '../../../components/usrdataredux';
+import { useSelector } from 'react-redux';
 
 function EmailCreate() {
     const [titleMsg, setTitle] = useState();
     const [bodyMsg, setBody] = useState();
-
+    
     let usrData = GetUserDataFromReduxStore();
+    
+    let cont = useSelector(state=>state.contentS.value);
+    console.log('THIS CONTNET',cont.contentID);
 
     const handleSubmit = ()=>{
         console.log(titleMsg, bodyMsg);
-        axios.post('/emailtosub/send',{titleMsg, bodyMsg, owner:usrData.userData.id},{
+        axios.post('/emailtosub/send',{titleMsg, bodyMsg,},{
             headers:{
                 Authorization: `Bearer ${usrData.token}`
             }
@@ -48,11 +52,8 @@ function EmailCreate() {
             </div>
 
             <div className='flex flex-col col-span-7 gap-2 border rounded p-5'>
-                <p>Content Title</p>
-                <p className='text-sm font-light'>It is a long established fact that a reader will be distracted by the readable content of a page when 
-                    looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
-                    as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing 
-                    packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncove</p>
+                <p>{cont.contentID.contentName}</p>
+                <p className='text-sm font-light'>{cont.contentID.contentDescription}</p>
                
                
                
