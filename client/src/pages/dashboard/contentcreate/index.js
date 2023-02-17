@@ -9,17 +9,30 @@ function ContentCreate() {
  const[contentName, setContentName] = useState();
  const[contentDescription, setContentDescription] = useState();
  const[owner, setOwner] = useState();
+ const [contents, setContents] = useState([]);
+
 
 let usrData = GetUserDataFromReduxStore();
 
+
 const submitHandler = ()=>{
-   const data = {contentName, contentDescription, owner, owner : usrData.id};
+   const data = {contentName, contentDescription, owner, owner : usrData.userData.id};
    
+   console.log(data);
    axios.post('/subscriptions/create', data,{
     headers:{
-        Authorization: `Bearer ${usrData.token}`
+        Authorization : `Bearer ${usrData.token}`
     }
-   }).then(res=>console.log(res.data));
+   }).then(res=>{
+         axios.get('/subscriptions',{
+            headers:{
+                Authorization: `Bearer ${usrData.token}`
+            }
+        })
+        .then(res=>setContents(res.data.data));
+   });
+
+   
  }
 
 
@@ -54,15 +67,18 @@ const submitHandler = ()=>{
                 <p className='text-sm mb-3 font-semibold'>Content created</p>
                 <div className='flex gap-2 mb-5 content-grid'>
                     {
-                        [1,2,3,4].map(i=> 
+                        contents.length > 0 ?
+
+                        contents.map(i=> 
                             <div className='card-main-page p-2 border rounded flex flex-col w-full text-xs content-grid-item'>
-                                <p className='font-semibold mb-2'><span className='bg-green-400 rounded-full'></span>Title Content</p>
+                                <p className='font-semibold mb-2'><span className='bg-green-400 rounded-full'></span>{i.contentName}</p>
                                 <p className='mb-3'>28th Something 2022</p>
-                                <p className='w-4/5'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                                    standard dummy text ever since the</p>
+                                <p className='w-4/5'>{i.contentDescription}</p>
                                     
                             
-                            </div>)
+                            </div>): <div className='w-full h-full'>
+                                        <p className='text-gray-500 text-sm'>No Content to show</p>
+                                    </div>
                     }
                 
                 
