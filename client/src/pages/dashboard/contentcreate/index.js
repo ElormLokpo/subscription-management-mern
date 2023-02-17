@@ -14,6 +14,14 @@ function ContentCreate() {
 
 let usrData = GetUserDataFromReduxStore();
 
+useEffect(()=>{
+    axios.get('/subscriptions', {
+        headers:{
+            Authorization: `Bearer ${usrData.token}`
+        }
+    }).then(res=>setContents(res.data.data));
+},[])
+
 
 const submitHandler = ()=>{
    const data = {contentName, contentDescription, owner, owner : usrData.userData.id};
