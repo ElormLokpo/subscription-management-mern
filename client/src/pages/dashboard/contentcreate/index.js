@@ -15,7 +15,7 @@ function ContentCreate() {
 let usrData = GetUserDataFromReduxStore();
 
 useEffect(()=>{
-    axios.get('/subscriptions', {
+    axios.get(`content?id=${usrData.userData.id}`, {
         headers:{
             Authorization: `Bearer ${usrData.token}`
         }
@@ -27,12 +27,12 @@ const submitHandler = ()=>{
    const data = {contentName, contentDescription, owner, owner : usrData.userData.id};
    
    console.log(data);
-   axios.post('/subscriptions/create', data,{
+   axios.post('/content/create', data,{
     headers:{
         Authorization : `Bearer ${usrData.token}`
     }
    }).then(res=>{
-         axios.get('/subscriptions',{
+         axios.get(`content?id=${usrData.userData.id}`,{
             headers:{
                 Authorization: `Bearer ${usrData.token}`
             }

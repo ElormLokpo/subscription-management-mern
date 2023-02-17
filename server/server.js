@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./utils/dbConfig');
 const UserEmailRoutes = require('./routes/user.emails.routes');
-const SubscriptionRoutes = require('./routes/subscription.routes');
+const ContentRoutes = require('./routes/content.routes');
 const AdminAuthRoutes = require('./routes/admin.auth.routes');
 const EmailToSubscribersRoutes = require('./routes/email.to.subscriber.route')
 const {errorMiddleware} = require('./middleware/error.middleware');
@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use('/useremails', UserEmailRoutes);
-app.use('/subscriptions', SubscriptionRoutes);
+app.use('/content', ContentRoutes);
 app.use('/auth', AdminAuthRoutes);
 app.use('/emailtosub', EmailToSubscribersRoutes)
 

@@ -9,7 +9,7 @@ exports.adminAuthorize = async function(req,res,next){
         next(new ErrorHanlder('Token missing.'));
     }
     let token = authorization.split(' ')[1];
-    console.log(token);
+  
     let {id} = await jwt.verify(token, process.env.JWT_SECRET);
     let {_id} = await AdminModel.findById(id);
     

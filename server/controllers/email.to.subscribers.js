@@ -1,14 +1,15 @@
 const nodemailer = require('nodemailer');
 const UserEmailModel = require('../models/user.emails');
-const SubscriptionModel = require('../models/subscription.model');
+const ContentModel = require('../models/content.model');
 const {emailTemplate} = require('../utils/emailTemplate');
 
 exports.emailToSubscribers = async (req, res, next)=>{
-    const {subject,titleMsg, bodyMsg} = req.body;
-    const {_id} = await SubscriptionModel.findOne({owner: req.user})
+    const {subject,titleMsg, bodyMsg, owner} = req.body;
+    const {_id} = await ContentModel.findOne({owner})
 
-
-    const data = await UserEmailModel.find({subscription: _id}).select('email');
+  
+    let data = await UserEmailModel.find({content: _id}).select('email');
+    console.log(data);
 
     let emailsToSend = [];
     

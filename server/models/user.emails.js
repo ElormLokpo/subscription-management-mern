@@ -8,9 +8,9 @@ const UserEmailSchema = mongoose.Schema({
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Enter a valid email'],
         required:true
     },
-    subscription:{
+    content:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'SubscriptionModel'
+        ref: 'ContentModel'
     },
     isSubscribed:{
         type:Boolean,

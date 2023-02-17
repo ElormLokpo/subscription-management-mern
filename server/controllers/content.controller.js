@@ -1,7 +1,7 @@
-const SubscriptionModel = require('../models/subscription.model');
+const SubscriptionModel = require('../models/content.model');
 const ErrorHanlder = require('../utils/errHanlder');
 
-exports.createSubscriptionsController = async (req,res,next)=>{
+exports.createContentsController = async (req,res,next)=>{
         try{
 
         const {contentName, contentDescription, owner} = req.body;
@@ -19,7 +19,7 @@ exports.createSubscriptionsController = async (req,res,next)=>{
     
 }
 
-exports.getSubscriptionsController = async (req,res,next)=>{
+exports.getContentsController = async (req,res,next)=>{
     try{
         let ownerId = req.query.id;
         const data = await SubscriptionModel.find({owner:ownerId});
@@ -34,7 +34,7 @@ exports.getSubscriptionsController = async (req,res,next)=>{
 }
 
 
-exports.getSubscriptionController = async (req,res,next)=>{
+exports.getContentController = async (req,res,next)=>{
     try{
         const data = await SubscriptionModel.findById(req.params.subsid);
         res.status(200).json({success:true, data});
@@ -46,7 +46,7 @@ exports.getSubscriptionController = async (req,res,next)=>{
 
 }
 
-exports.updateSubscriptionController = async (req,res,next)=>{
+exports.updateContentController = async (req,res,next)=>{
     try{
         const {contentName, contentDescription, owner} = req.body;
         const data = await SubscriptionModel.findByIdAndUpdate(req.params.subsid, {contentName, contentDescription, owner}, {new:true});
@@ -60,7 +60,7 @@ exports.updateSubscriptionController = async (req,res,next)=>{
 
 }
 
-exports.deleteSubscriptionController = async (req,res,next)=>{
+exports.deleteContentController = async (req,res,next)=>{
     try{
         const data = await SubscriptionModel.findByIdAndDelete(req.params.subsid);
 

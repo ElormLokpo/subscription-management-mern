@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 
-const SubscriptionSchema = mongoose.Schema({
+const ContentSchema = mongoose.Schema({
     contentName:{
         type:String,
         required: true
@@ -17,4 +17,4 @@ const SubscriptionSchema = mongoose.Schema({
 }, {timestamps: true})
 
 
-module.exports = mongoose.model('SubscriptionModel', SubscriptionSchema);
+module.exports = mongoose.model('ContentModel', ContentSchema);
