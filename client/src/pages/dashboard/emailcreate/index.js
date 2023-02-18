@@ -16,7 +16,7 @@ function EmailCreate() {
 
     const handleSubmit = ()=>{
         console.log(titleMsg, bodyMsg);
-        axios.post('/emailtosub/send',{titleMsg, bodyMsg,},{
+        axios.post('/emailtosub/send',{titleMsg, bodyMsg, contentid: cont.contentID._id},{
             headers:{
                 Authorization: `Bearer ${usrData.token}`
             }
@@ -55,7 +55,7 @@ function EmailCreate() {
                 <p>{cont.contentID.contentName}</p>
                 <p className='text-sm font-light'>{cont.contentID.contentDescription}</p>
                
-               
+               <p>something small</p>
                
             </div>
 

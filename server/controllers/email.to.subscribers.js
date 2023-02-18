@@ -4,8 +4,8 @@ const ContentModel = require('../models/content.model');
 const {emailTemplate} = require('../utils/emailTemplate');
 
 exports.emailToSubscribers = async (req, res, next)=>{
-    const {subject,titleMsg, bodyMsg, owner} = req.body;
-    const {_id} = await ContentModel.findOne({owner})
+    const {subject,titleMsg, bodyMsg, contentid} = req.body;
+    const {_id} = await ContentModel.findOne({_id:contentid})
 
   
     let data = await UserEmailModel.find({content: _id}).select('email');
@@ -13,13 +13,13 @@ exports.emailToSubscribers = async (req, res, next)=>{
 
     let emailsToSend = [];
     
-    for(let i=0; i< data.length; i++){
-        let s = data[i].email;
-        emailsToSend.push(s);
-        
-    }
-
-    
+    if(data.length > 0 ){
+        for(let i=0; i< data.length; i++){
+            let s = data[i].email;
+            emailsToSend.push(s);
+            
+        }
+       
 
     let transporter = nodemailer.createTransport({
         host: "sandbox.smtp.mailtrap.io",
@@ -41,4 +41,7 @@ exports.emailToSubscribers = async (req, res, next)=>{
 
     res.status(200).json({msg:'successs', emailsToSend, emails: emailsToSend});
     next();
+    } else{
+        res.status(200).json({msg:'No subscribers to content'});
+    }
 }

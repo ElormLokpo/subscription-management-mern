@@ -3,8 +3,8 @@ const ErrorHanlder = require('../utils/errHanlder');
 
 exports.createEmailsController = async (req,res,next)=>{
     try{
-        const {email, subscription} = req.body;
-        const data = await UserEmailModel.create({email,subscription});
+        const {email, content} = req.body;
+        const data = await UserEmailModel.create({email,content});
     
         res.status(200).json({success:true, data});
         next();
@@ -40,8 +40,8 @@ exports.getEmailController = async (req,res,next)=>{
 
 exports.updateEmailController = async (req,res,next)=>{
     try{
-        const {email, subscription} = req.body;
-        const data = await UserEmailModel.findByIdAndUpdate(req.params.emailid, {email,subscription}, {new:true});
+        const {email, content} = req.body;
+        const data = await UserEmailModel.findByIdAndUpdate(req.params.emailid, {email,content}, {new:true});
     
         res.status(200).json({success:true, data});
         next();
