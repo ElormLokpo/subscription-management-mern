@@ -1,6 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-function Table() {
+function Table(props) {
+    const [emails, setEmails] = useState([]);
+
+    if(props.emails.length !== 0){
+        setEmails(props.emails);
+    }
+   
+
   return (
     <table className='border w-full h-full text-sm'>
         <thead className=''>
@@ -12,7 +19,7 @@ function Table() {
         </thead>
 
         {
-            [1,2,2,2,2,2,2].map(i=>  <tr className='border-b'>
+            emails.map(i=>  <tr className='border-b'>
                                         <td className='py-2 px-2 text-sm'>
                                             Jackson@jock.com
                                         </td>

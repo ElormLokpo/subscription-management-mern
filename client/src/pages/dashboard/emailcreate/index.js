@@ -8,11 +8,24 @@ import { useSelector } from 'react-redux';
 function EmailCreate() {
     const [titleMsg, setTitle] = useState();
     const [bodyMsg, setBody] = useState();
-    
+    const [emailList, setEmailList] = useState([]);
+
+
     let usrData = GetUserDataFromReduxStore();
     
     let cont = useSelector(state=>state.contentS.value);
-    console.log('THIS CONTNET',cont.contentID);
+  //  console.log('THIS CONTNET',cont.contentID);
+
+
+        axios.get(`/useremails?content=${cont.contentID._id}`,{
+            headers:{
+                Authorization: `Bearer ${usrData.token}`
+            }
+        })
+        .then(res=>{
+            setEmailList(res.data.data);
+        })
+    
 
     const handleSubmit = ()=>{
         console.log(titleMsg, bodyMsg);
@@ -22,7 +35,7 @@ function EmailCreate() {
             }
         })
         .then(res=>{
-            console.log(res.data);
+           
         })
 
     }
@@ -55,7 +68,7 @@ function EmailCreate() {
                 <p>{cont.contentID.contentName}</p>
                 <p className='text-sm font-light'>{cont.contentID.contentDescription}</p>
                
-               <p>something small</p>
+              
                
             </div>
 
@@ -64,7 +77,37 @@ function EmailCreate() {
             
         <div>
             <p className='text-sm mb-3 font-semibold'>Subscribers</p>
-            <Table />
+                    
+            {
+                emailList.length !== 0 ? 
+                <table className='border w-full h-full text-sm'>
+                        <thead className=''>
+                            <tr className='border-b bg-gray-100'>
+                                <td className='py-2 px-2 font-semibold'>Email</td>
+                                <td className='py-2 px-2 font-semibold'>Content</td>
+                                <td className='py-2 px-2 font-semibold'>Delete</td>
+                            </tr>
+                        </thead>
+
+                        {
+                            emailList.map(i=>  <tr className='border-b'>
+                                                        <td className='py-2 px-2 text-sm'>
+                                                            {i.email}
+                                                        </td>
+                                                        <td className='py-2 px-2 text-sm'>
+                                                            {cont.contentID.contentName}
+                                                        </td>
+                                                        <td className='py-2 px-2 text-sm'>
+                                                            Delete
+                                                        </td>
+                                                    </tr>)
+                        }
+                    
+                        
+                        
+                </table>: <p>No subscribers.</p>
+            }     
+           
     
         </div>
        

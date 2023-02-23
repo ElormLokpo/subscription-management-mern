@@ -18,7 +18,8 @@ exports.createEmailsController = async (req,res,next)=>{
 
 exports.getEmailsController = async (req,res,next)=>{
     try{
-        const data = await UserEmailModel.find();
+        const {content} = req.query;
+        const data = await UserEmailModel.find({content});
         res.status(200).json({success:true, data});
     } catch(error){
         next(new ErrorHanlder('Something went wrong'))
