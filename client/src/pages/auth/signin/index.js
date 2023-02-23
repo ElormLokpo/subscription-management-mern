@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {storeToken, storeUserData} from '../../../services/redux/slices/loginSlice';
 import axios from '../../../services/axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function SignIn() {
     const [email, setEmail] = useState();
@@ -62,14 +62,18 @@ function SignIn() {
                     
 
                     <div className='w-full my-5'>
-                        <button className='btn hover:bg-purple-900 w-full py-3 text-white rounded text-xs' onClick= {handleSubmit}>Sign In</button>
+                        <button className='bg-blue-500 hover:bg-blue-900 w-full py-3 text-white rounded text-xs' onClick= {handleSubmit}>Sign In</button>
                     </div>
-                    <p className='flex justify-center my-2'>
+
+                    <div className='text-xs flex justify-center text-blue-700'>
+                        <Link to = '/signup'>Don't have an account? Create one</Link>
+                    </div>
+                    {/* <p className='flex justify-center my-2'>
                         OR
                     </p>
                     <div className='w-full'>
                         <button className='bg-blue-500 text-white w-full py-3 rounded text-xs'>Continue with Google</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

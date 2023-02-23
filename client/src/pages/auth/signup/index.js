@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from '../../../services/axios/';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 function SignUp() {
   const [fullname, setFullname] = useState();
@@ -52,14 +52,20 @@ function SignUp() {
                     </div>
 
                     <div className='w-full my-2'>
-                        <button className='btn hover:bg-purple-900 w-full py-3 rounded text-xs text-white' onClick = {handleSubmit}>Sign Up</button>
+                        <button className='bg-blue-500 hover:bg-blue-900 w-full py-3 rounded text-xs text-white' onClick = {handleSubmit}>Sign Up</button>
                     </div>
-                    <p className='flex justify-center my-2'>
+                    <div className='text-xs flex justify-center text-blue-700'>
+                        <Link to = '/signin'>Already have an account? Sign in</Link>
+                    </div>
+
+                    {/* <p className='flex justify-center my-2'>
                         OR
                     </p>
                     <div className='w-full'>
-                        <button className='bg-blue-500 text-white w-full py-3 rounded text-xs'>Continue with Google</button>
-                    </div>
+                        <button className='bg-blue-500 text-white w-full py-3 rounded text-xs'>Continue with Google</button> */}
+
+                        
+                    
                 </div>
             </div>
         </div>

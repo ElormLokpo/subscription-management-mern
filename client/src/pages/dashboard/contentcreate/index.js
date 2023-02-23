@@ -74,7 +74,7 @@ const submitHandler = ()=>{
                 </div>
 
                 <div className='flex justify-end'>
-                    <button className='bg-purple-600 p-2 text-white rounded text-xs' onClick = {submitHandler}>Create Content</button>
+                    <button className='bg-blue-500 p-2 text-white rounded text-xs' onClick = {submitHandler}>Create Content</button>
                 </div>
             </div>
 

@@ -4,7 +4,7 @@ const ContentModel = require('../models/content.model');
 const {emailTemplate} = require('../utils/emailTemplate');
 
 exports.emailToSubscribers = async (req, res, next)=>{
-    const {subject,titleMsg, bodyMsg, contentid} = req.body;
+    const {titleMsg, bodyMsg, contentid} = req.body;
     const {_id} = await ContentModel.findOne({_id:contentid})
 
   
@@ -35,7 +35,7 @@ exports.emailToSubscribers = async (req, res, next)=>{
     transporter.sendMail({
         from :'benedictdev@gmail.com',
         to: emailsToSend,
-        subject: subject,
+        subject: 'Urgent Information',
         html: emailTemp
     })
 

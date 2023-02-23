@@ -4,6 +4,7 @@ import Table from '../../../components/table';
 import axios from '../../../services/axios';
 import {GetUserDataFromReduxStore} from '../../../components/usrdataredux';
 import { useSelector } from 'react-redux';
+import { BiTrashAlt } from 'react-icons/bi';
 
 function EmailCreate() {
     const [titleMsg, setTitle] = useState();
@@ -28,14 +29,14 @@ function EmailCreate() {
     
 
     const handleSubmit = ()=>{
-        console.log(titleMsg, bodyMsg);
+        
         axios.post('/emailtosub/send',{titleMsg, bodyMsg, contentid: cont.contentID._id},{
             headers:{
                 Authorization: `Bearer ${usrData.token}`
             }
         })
         .then(res=>{
-           
+          console.log(res.data); 
         })
 
     }
@@ -46,7 +47,7 @@ function EmailCreate() {
        <HeaderText title = "Send emails to subscribers" />
 
 
-        <div className='grid grid-cols-12 gap-4 spacing-bottom-two mt-4'>
+        <div className='grid grid-cols-12 gap-4 mt-4 spacing-bottom-two'>
 
             <div className='border rounded col-span-5 p-2'>
                 <div className='mb-2'>
@@ -60,7 +61,7 @@ function EmailCreate() {
                 </div>
 
                 <div className='flex justify-end'>
-                    <button className='bg-purple-600 p-2 text-white rounded text-xs' onClick = {handleSubmit}>Send email</button>
+                    <button className='bg-blue-500 p-2 text-white rounded text-xs' onClick = {handleSubmit}>Send email</button>
                 </div>
             </div>
 
@@ -74,9 +75,12 @@ function EmailCreate() {
 
 
         </div>
+
+        
+       
             
         <div>
-            <p className='text-sm mb-3 font-semibold'>Subscribers</p>
+            <p className='text-sm mb-3 font-semibold'>Subscribers({emailList.length})</p>
                     
             {
                 emailList.length !== 0 ? 
@@ -97,8 +101,8 @@ function EmailCreate() {
                                                         <td className='py-2 px-2 text-sm'>
                                                             {cont.contentID.contentName}
                                                         </td>
-                                                        <td className='py-2 px-2 text-sm'>
-                                                            Delete
+                                                        <td className='py-2 px-2 text-sm text-red-400'>
+                                                            <BiTrashAlt />
                                                         </td>
                                                     </tr>)
                         }
